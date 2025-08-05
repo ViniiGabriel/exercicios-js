@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+fieldset {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0 10px;
+  color: #2c3e50;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin: 10px 0 20px 0;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.posts {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.posts div {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #3498db;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.posts h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.posts hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin-top: 15px;
+}
