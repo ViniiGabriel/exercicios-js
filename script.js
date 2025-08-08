@@ -1,5 +1,6 @@
 // Lista das pastas dos projetos
 const projectFolders = [
+  'relogio-js',
   'bateria-js',
   'blog_fake_json',
   'jogo_luta_FP',
