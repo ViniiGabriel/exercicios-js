@@ -1,11 +1,115 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercícios JS</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meus Exercícios — Índice</title>
+  <style>
+    :root{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#222}
+    body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f5f7fb;margin:0;padding:24px}
+    .card{width:980px;max-width:100%;background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(18,38,63,0.08);padding:28px}
+    h1{margin:0 0 8px;font-size:20px}
+    p.lead{margin:0 0 16px;color:#50617a}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .proj{padding:12px;border-radius:8px;border:1px solid #eef2f7;background:linear-gradient(180deg,#fff,#fcfdff)}
+    .proj h3{margin:0 0 8px;font-size:16px}
+    .proj .row{display:flex;gap:8px}
+    button, a.button{appearance:none;border:0;padding:8px 10px;border-radius:6px;cursor:pointer;text-decoration:none}
+    .open{background:#0b63d6;color:#fff}
+    .preview{background:#e6eefc;color:#0b3a7a}
+    .newtab{background:#f3f4f6;color:#222}
+    .controls{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+    iframe.preview-frame{width:100%;height:480px;border:1px solid #e6eef7;border-radius:6px;margin-top:12px}
+    @media (max-width:760px){.grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-    <h1>Hello World!</h1>
+  <div class="card">
+    <h1>Índice de projetos</h1>
+    <p class="lead">Clique em um projeto para abrir. Use "Abrir no preview" para carregar dentro desta página (iframe) ou "Abrir em nova aba".</p>
+
+    <div class="controls">
+      <label style="font-size:13px;color:#556">Base das pastas:</label>
+      <input id="base" type="text" value="./" style="flex:1;padding:6px;border-radius:6px;border:1px solid #e6eef7" />
+    </div>
+
+    <div class="grid" id="projects">
+    </div>
+
+    <iframe id="preview" class="preview-frame" style="display:none" sandbox="allow-scripts allow-same-origin"></iframe>
+  </div>
+
+  <script>
+    const projectFolders = [
+      'bateria-js',
+      'blog_fake_json',
+      'jogo_luta_FP',
+      'jogo_luta_POO'
+    ];
+
+    const projectsDiv = document.getElementById('projects');
+    const baseInput = document.getElementById('base');
+    const preview = document.getElementById('preview');
+
+    function makeCard(name){
+      const el = document.createElement('div');
+      el.className = 'proj';
+
+      const title = document.createElement('h3');
+      title.textContent = name;
+      el.appendChild(title);
+
+      const row = document.createElement('div');
+      row.className = 'row';
+
+      const aOpen = document.createElement('a');
+      aOpen.className = 'button open';
+      aOpen.textContent = 'Abrir';
+      aOpen.href = '#';
+      aOpen.addEventListener('click', e => {
+        e.preventDefault();
+        const url = buildUrl(name);
+        window.location.href = url; 
+      });
+
+      const aNew = document.createElement('a');
+      aNew.className = 'button newtab';
+      aNew.textContent = 'Abrir em nova aba';
+      aNew.href = buildUrl(name);
+      aNew.target = '_blank';
+
+      const aPrev = document.createElement('button');
+      aPrev.className = 'button preview';
+      aPrev.textContent = 'Abrir no preview';
+      aPrev.addEventListener('click', () => {
+        const url = buildUrl(name);
+        preview.style.display = 'block';
+        preview.src = url;
+        preview.scrollIntoView({behavior:'smooth'});
+      });
+
+      row.appendChild(aOpen);
+      row.appendChild(aNew);
+      row.appendChild(aPrev);
+      el.appendChild(row);
+
+      return el;
+    }
+
+    function buildUrl(folder){
+      // Ajuste simples: se o usuário deu uma base terminando em /, use tal qual
+      const base = baseInput.value.trim() || './';
+      // Se na pasta do projeto existir index.html, ./folder/ funciona. Aqui usamos folder/ por simplicidade
+      // Exemplo final: <base>bateria-js/
+      let sep = base.endsWith('/') ? '' : '/';
+      return base + sep + folder + '/';
+    }
+
+    // Gera os cards
+    projectFolders.forEach(p => projectsDiv.appendChild(makeCard(p)));
+
+    // Dica: se algum projeto não tiver index.html na pasta, você deve apontar para o arquivo correto, ex: './blog_fake_json/index.html' ou './blog_fake_json/pagina.html'
+
+  </script>
 </body>
 </html>
