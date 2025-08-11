@@ -1,5 +1,6 @@
 // Lista das pastas dos projetos
 const projectFolders = [
+  'jogo-da-velha-js',
   'clima-js',
   'relogio-js',
   'bateria-js',
