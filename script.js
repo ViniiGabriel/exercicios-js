@@ -1,12 +1,9 @@
 // Lista das pastas dos projetos
 const projectFolders = [
-<<<<<<< HEAD
   'arrasta-e-solta-js',
-=======
   'quiz-js',
   'quadro-desenho-js',
   'jogo-da-velha-js',
->>>>>>> ddfa4941a90a52f5ba77c89411d4f6507cbbb7ae
   'clima-js',
   'relogio-js',
   'bateria-js',
